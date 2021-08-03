@@ -5,7 +5,7 @@ namespace Rest_api_dotnet
 {
     public static class Extensions
     {
-        public static ItemDTO asDTO(this Item item)
+        public static ItemDTO AsDTO(this Item item)
         {
             return new ItemDTO
             {

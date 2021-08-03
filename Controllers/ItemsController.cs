@@ -22,7 +22,7 @@ namespace Rest_api_dotnet.Controllers
         [HttpGet]
         public IEnumerable<ItemDTO> GetItems()
         {
-            var items = repository.GetItems().Select(item => item.asDTO());
+            var items = repository.GetItems().Select(item => item.AsDTO());
             return items;
         }
 
@@ -36,7 +36,7 @@ namespace Rest_api_dotnet.Controllers
                 return NotFound();
             }
 
-            return item.asDTO();
+            return item.AsDTO();
         }
     }
 }
