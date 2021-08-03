@@ -5,7 +5,7 @@ using Rest_api_dotnet.Entities;
 
 namespace Rest_api_dotnet.Repositories
 {
-    public class InMemItemsRepository
+    public class InMemItemsRepository : IItemsRepository
     {
         private readonly List<Item> items = new()
         {
