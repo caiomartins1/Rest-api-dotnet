@@ -1,8 +1,8 @@
 using System;
 
-namespace Rest_api_dotnet.DTOs
+namespace Rest_api_dotnet.Dtos
 {
-    public record ItemDTO
+    public record ItemDto
     {
         public Guid Id { get; init; }
         public string Name { get; init; }

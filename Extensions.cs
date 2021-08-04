@@ -1,13 +1,13 @@
-using Rest_api_dotnet.DTOs;
+using Rest_api_dotnet.Dtos;
 using Rest_api_dotnet.Entities;
 
 namespace Rest_api_dotnet
 {
     public static class Extensions
     {
-        public static ItemDTO AsDTO(this Item item)
+        public static ItemDto AsDto(this Item item)
         {
-            return new ItemDTO
+            return new ItemDto
             {
                 Id = item.Id,
                 Name = item.Name,
