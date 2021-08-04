@@ -11,7 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 using Rest_api_dotnet.Repositories;
+using Rest_api_dotnet.Settings;
 
 namespace Rest_api_dotnet
 {
@@ -28,7 +33,15 @@ namespace Rest_api_dotnet
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddSingleton<IItemsRepository, InMemItemsRepository>();
+            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
+
+            services.AddSingleton<IMongoClient>(serviceProvider =>
+            {
+                MongoDBSettings settings = new();
+                return new MongoClient(settings.ConnectionString);
+            });
+            services.AddSingleton<IItemsRepository, MongoDBItemsRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
