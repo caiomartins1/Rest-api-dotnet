@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Rest_api_dotnet.Entities;
 
 namespace Rest_api_dotnet.Repositories
 {
     public interface IItemsRepository
     {
-        Item GetItem(Guid id);
-        IEnumerable<Item> GetItems();
+        Task<Item> GetItemAsync(Guid id);
 
-        void CreateItem(Item item);
+        Task<IEnumerable<Item>> GetItemsAsync();
 
-        void UpdateItem(Item item);
+        Task CreateItemAsync(Item item);
 
-        void DeleteItem(Guid id);
+        Task UpdateItemAsync(Item item);
+
+        Task DeleteItemAsync(Guid id);
     }
 }
